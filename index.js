@@ -1,8 +1,8 @@
 'use strict';
 
 const STORE = [
-  {id: cuid(), question: 'first', answers:[ 'an', 'ans', 'answer3', 'answer4'], correctAnswer: 'correct answer'},
-  {id: cuid(), question: 'second', answers:[ 'answer1', 'answer2', 'answer3', 'answer4'], correctAnswer: 'correct answer'},
+  {id: cuid(), question: 'first', answers:[ 'an', 'ans', 'answer3', 'answer4'], correctAnswer: 'answer3'},
+  {id: cuid(), question: 'second', answers:[ 'answer1', 'answer2', 'answer3', 'answer4'], correctAnswer: 'answer4'},
   {id: cuid(), question: 'question text', answers:[ 'answer1', 'answer2', 'answer3', 'answer4'], correctAnswer: 'correct answer'},
   {id: cuid(), question: 'question text', answers:[ 'answer1', 'answer2', 'answer3', 'answer4'], correctAnswer: 'correct answer'},
   {id: cuid(), question: 'question text', answers:[ 'answer1', 'answer2', 'answer3', 'answer4'], correctAnswer: 'correct answer'},
@@ -33,10 +33,10 @@ function loadQuestion(question){
 }
 
 function startQuiz() {
-    $('.startQuiz').on('click', '.js-button', function(event){
+  $('.startQuiz').on('click', '.js-button', function(event){
       
-      loadQuestion(STORE[questionNumberStepper()]);
-    });   
+    loadQuestion(STORE[questionNumberStepper()]);
+  });   
     
 }
 
@@ -44,13 +44,30 @@ function createQuestion(item) {
   //template to generate each question
 }
 
+function correctAnswer() {
+  return `<section class="startQuiz">
+    <h1>CORRECT!</h1>
+    <img>
+    <button type="button" class="startButton js-button">Next Question</button>
+</section>`;
+}
+
 function submitAnswer() {
   //listens for when the user "submits" their answer to a question
   //update STORE and render next section
+  $('#questionBody').on('submit', '.questions', function(event) {
+    event.preventDefault();
+    let currentQuestion = STORE[5].questionNumber;
+    let selected = $('input:checked').val();
+    let correct = STORE[currentQuestion].correctAnswer;
+    if (selected === correct) {
+      $('.startQuiz').html(correctAnswer());
+    }
+  });
 }
 
 function handleAnswer() {
-    //check if answer is true or not and display correct or incorrect
+  //check if answer is true or not and display correct or incorrect
 }
  
 function restartQuiz() {
@@ -59,10 +76,10 @@ function restartQuiz() {
 }
 
 function doQuiz() {
-    startQuiz();
-    submitAnswer();
-    handleAnswer();
-    restartQuiz();
+  startQuiz();
+  submitAnswer();
+  handleAnswer();
+  restartQuiz();
 }
 
 $(doQuiz);
