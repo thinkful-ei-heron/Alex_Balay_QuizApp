@@ -17,13 +17,13 @@ function questionNumberStepper() {
 function newFunction(item){
   let stepper = questionNumberStepper();
   return `<form class="questions">
-  <fieldset> 
+  <fieldset class="questionList"> 
     <legend class="questionText">${item.question}</legend> 
-  <input type="radio" name="answer 1"> ${item.answers[0]}<br>
-  <input type="radio" name="answer 2"> ${item.answers[1]}<br>
-  <input type="radio" name="answer 3"> ${item.answers[2]}<br>
-  <input type="radio" name="answer 4"> ${item.answers[3]}<br>
-  <input type="submit" value="Submit">
+  <input type="radio" name = answers value=${item.answers[0]}> ${item.answers[0]}<br>
+  <input type="radio" name = answers value=${item.answers[1]}> ${item.answers[1]}<br>
+  <input type="radio" name = answers value=${item.answers[2]}> ${item.answers[2]}<br>
+  <input type="radio" name = answers value=${item.answers[3]}> ${item.answers[3]}<br>
+  <input type="submit" value="Submit" class="answer-button">
 </fieldset>
 </form>`;
 }
@@ -53,18 +53,27 @@ function correctAnswer() {
 }
 
 function submitAnswer() {
+  console.log("THIS WORKS");
   //listens for when the user "submits" their answer to a question
   //update STORE and render next section
-  $('#questionBody').on('submit', '.questions', function(event) {
+  $('.startQuiz').submit(function(event) {
     event.preventDefault();
+    console.log("CLICK");
+    console.log(STORE[5].questionNumber);
     let currentQuestion = STORE[5].questionNumber;
-    let selected = $('input:checked').val();
+    let selected = $(":radio").val();
     let correct = STORE[currentQuestion].correctAnswer;
+    console.log(selected);
+    console.log(STORE[currentQuestion].correctAnswer);
     if (selected === correct) {
       $('.startQuiz').html(correctAnswer());
     }
   });
 }
+
+/*$(":radio[name=rate]").change(function() {
+  console.log(this.value);
+});*/
 
 function handleAnswer() {
   //check if answer is true or not and display correct or incorrect
@@ -80,6 +89,8 @@ function doQuiz() {
   submitAnswer();
   handleAnswer();
   restartQuiz();
+  correctAnswer();
+  questionNumberStepper();
 }
 
 $(doQuiz);
