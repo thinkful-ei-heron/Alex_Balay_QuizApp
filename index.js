@@ -11,7 +11,8 @@ const STORE = [
 
 function questionNumberStepper() {
   let currentNum = STORE[5].questionNumber;
-  return currentNum++;
+  currentNum = currentNum + 1;
+  return currentNum;
 }
 
 function newFunction(item){
@@ -61,7 +62,7 @@ function submitAnswer() {
     console.log("CLICK");
     console.log(STORE[5].questionNumber);
     let currentQuestion = STORE[5].questionNumber;
-    let selected = $(":radio").val();
+    let selected = $("input[name='answers']:checked").val();
     let correct = STORE[currentQuestion].correctAnswer;
     console.log(selected);
     console.log(STORE[currentQuestion].correctAnswer);
@@ -70,10 +71,6 @@ function submitAnswer() {
     }
   });
 }
-
-/*$(":radio[name=rate]").change(function() {
-  console.log(this.value);
-});*/
 
 function handleAnswer() {
   //check if answer is true or not and display correct or incorrect
