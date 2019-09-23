@@ -6,7 +6,7 @@ const STORE = {
     {id: cuid(), questionNum: 2, question: 'What did Jerry ask Mr. Meeseeks for?', answers:[ 'answer1', 'answer2', 'answer3', 'two strokes off his golf game'], correctAnswer: 'two strokes off his golf game', image: 'photos/img6.jpg'},
     {id: cuid(), questionNum: 3, question: 'What is the name of the park that Rick builds inside an Australian homeless man?', answers:[ 'Anatomy Park', 'answer2', 'answer3', 'answer4'], correctAnswer: 'Anatomy Park', image: 'photos/img9.jpg'},
     {id: cuid(), questionNum: 4, question: 'Who is the worst person alive?', answers:[ 'answer1', 'Tammy', 'answer3', 'answer4'], correctAnswer: 'Tammy', image: 'photos/img10.png'},
-    {id: cuid(), questionNum: 5, question: 'Who is Morty based on?', answers:[ 'answer1', 'answer2', 'answer3', 'Marty from Back to the Future'], correctAnswer: 'answer4', image: 'photos/img2.jpg'}
+    {id: cuid(), questionNum: 5, question: 'Who is Morty based on?', answers:[ 'answer1', 'answer2', 'answer3', 'Marty from Back to the Future'], correctAnswer: 'Marty from Back to the Future', image: 'photos/img2.jpg'}
   ],
   questionNumber: 0,
   score: 0
@@ -42,7 +42,7 @@ function generateQuestion(question, questionNum, currentScore) {
     </fieldset>
     <div class="submitAnswerButton"><button type="submit" >Submit</button></div>
   </form>`;
-      
+    $('.logo').empty();
     $('.score').html(newHeader);
     $('.container').html(questionText);
     
@@ -109,8 +109,9 @@ function evaluateAnswer(correct, selected) {
     $.alert({
       title: 'Correct!',
       content: 'Good Job!',
-      boxWidth: '30%',
+      boxWidth: '60%',
       useBootstrap: false,
+      theme: 'Modern',
     });
     let newScore = parseInt(currentScore) + 1;
     return newScore;
@@ -118,8 +119,9 @@ function evaluateAnswer(correct, selected) {
   $.alert({
     title: 'Incorrect!',
     content: `${incorrectText}`,
-    boxWidth: '30%',
+    boxWidth: '60%',
     useBootstrap: false,
+    theme: 'Modern',
   });
   return currentScore;
 }

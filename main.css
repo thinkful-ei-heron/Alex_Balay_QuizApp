@@ -3,9 +3,7 @@
     margin: 0;
     padding: 0;
     border-radius: 1%;
-    font-family: "HelveticaNeue-CondensedBold", "Helvetica Neue";
-    color: white;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    
     /* display: flex;
     flex-direction: column; */
     /*background-color: black;*/
@@ -14,6 +12,9 @@
 
 body {
     background-color: black;
+    font-family: "HelveticaNeue-CondensedBold", "Helvetica Neue";
+    
+
 }
 
 /* header {
@@ -45,12 +46,12 @@ body {
 }
 
 .image {
-    width: 50%;
+    width: 80%;
 }
 
 .score {
   display: inline-block;
-  width: 50%;
+  width: 80%;
   text-align: right;
   margin-left: auto;
   margin-right: auto;
@@ -69,23 +70,9 @@ fieldset {
     margin-bottom: 2em;
 }
 
-/* fieldset input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-}
-
-/* On mouse-over, add a grey background color */
-/* .inputButton:hover input ~ span {
-  background-color: #ccc;
-}
-
-.inputButton input:checked ~ span {
-  color: #2196F3;
-} */
 .submitAnswer {
   text-align: left;
-  width:  50%;
+  width:  80%;
   color: white;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
@@ -110,7 +97,9 @@ fieldset {
     margin-bottom: 3em;
     font-size: 50%;
     background: gray;
-    width: 50%;
+    width: 80%;
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     /* height: auto;
     width: 50%; */
 }
@@ -125,7 +114,14 @@ fieldset {
 p {
     margin-bottom: 1em;
 }
+input[type=radio] {
+  float: left;
+}
 
+label {
+  margin-left: 30px;
+  display: block;
+}
 button { 
     background-color: #4CAF50; /* Green */ 
     border: 1px solid black;
@@ -157,7 +153,39 @@ button {
 }
 
 
+@media only screen and (min-width: 550px) {
+  .container {
+    font-size: 100%;
+  }
+  .submitAnswer {
+    font-size: 80%;
+  }
+}
 
+@media only screen and (min-width: 800px) {
+  .image {
+    width: 50%;
+  }
 
+  .score {
+    width: 50%;
+  }
+
+  .container {
+    width: 50%;
+  }
+  
+  .score {
+    font-size: 150%;
+  }
+
+  button {
+    padding: 20px 60px;
+  }
+
+  .container {
+    height: 50%;
+  }
+}
 
 
