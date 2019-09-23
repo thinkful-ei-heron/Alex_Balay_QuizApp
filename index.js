@@ -1,94 +1,128 @@
 'use strict';
 
-const STORE = [
-  {id: cuid(), question: 'first', answers:[ 'an', 'ans', 'answer3', 'answer4'], correctAnswer: 'answer3'},
-  {id: cuid(), question: 'second', answers:[ 'answer1', 'answer2', 'answer3', 'answer4'], correctAnswer: 'answer4'},
-  {id: cuid(), question: 'question text', answers:[ 'answer1', 'answer2', 'answer3', 'answer4'], correctAnswer: 'correct answer'},
-  {id: cuid(), question: 'question text', answers:[ 'answer1', 'answer2', 'answer3', 'answer4'], correctAnswer: 'correct answer'},
-  {id: cuid(), question: 'question text', answers:[ 'answer1', 'answer2', 'answer3', 'answer4'], correctAnswer: 'correct answer'},
-  {id: cuid(), questionNumber: 0, score: 0}
-];
+const STORE = {
+  questions: [
+    {id: cuid(), questionNum: 1, question: 'What does Rick use to travel between dimensions and universes?', answers:[ 'space laser', 'portal gun', 'tardis', 'universe key'], correctAnswer: 'portal gun'},
+    {id: cuid(), questionNum: 2, question: 'second', answers:[ 'answer1', 'answer2', 'answer3', 'answer4'], correctAnswer: 'answer4'},
+    {id: cuid(), questionNum: 3, question: 'third', answers:[ 'answer1', 'answer2', 'answer3', 'answer4'], correctAnswer: 'answer2'},
+    {id: cuid(), questionNum: 4, question: 'fourth', answers:[ 'answer1', 'answer2', 'answer3', 'answer4'], correctAnswer: 'answer2'},
+    {id: cuid(), questionNum: 5, question: 'fifth', answers:[ 'answer1', 'answer2', 'answer3', 'answer4'], correctAnswer: 'answer4'}
+  ],
+  questionNumber: 0,
+  score: 0
+};
 
-function questionNumberStepper() {
-  let currentNum = STORE[5].questionNumber;
-  currentNum = currentNum + 1;
-  return currentNum;
-}
 
-function newFunction(item){
-  let stepper = questionNumberStepper();
-  return `<form class="questions">
-  <fieldset class="questionList"> 
-    <legend class="questionText">${item.question}</legend> 
-  <input type="radio" name = answers value=${item.answers[0]}> ${item.answers[0]}<br>
-  <input type="radio" name = answers value=${item.answers[1]}> ${item.answers[1]}<br>
-  <input type="radio" name = answers value=${item.answers[2]}> ${item.answers[2]}<br>
-  <input type="radio" name = answers value=${item.answers[3]}> ${item.answers[3]}<br>
-  <input type="submit" value="Submit" class="answer-button">
-</fieldset>
-</form>`;
-}
 
-function loadQuestion(question){
-  $('.startQuiz').html(newFunction(question));
+function generateQuestion(question, questionNum, currentScore) {
+  if (questionNum < 5) {
+    let nextQuestion = STORE.questions[questionNum];
+    let newHeader = `<ul>
+      <li class="questionCount">Question
+          <span class="questionNum">${nextQuestion.questionNum}</span>/5</li>
+      <li class ="scoreCount">Score:
+          <span class="scoreNum">${currentScore}</span></li>  
+  </ul>`;
+    let questionText = 
+    `<form class="submitAnswer">
+    <fieldset id="${nextQuestion.id}">
+            <legend class="questionText">${nextQuestion.question}</legend>
+            <input type="radio" name="answer" id="answer1" value="${nextQuestion.answers[0]}" required>
+            <label for="answer1">${nextQuestion.answers[0]}</label>
+            <br>
+            <input type="radio" name="answer" id="answer2" value="${nextQuestion.answers[1]}">
+            <label for="answer2">${nextQuestion.answers[1]}</label>
+            <br>
+            <input type="radio" name="answer" id="answer3" value="${nextQuestion.answers[2]}">
+            <label for="answer3">${nextQuestion.answers[2]}</label>
+            <br>
+            <input type="radio" name="answer" id="answer4" value="${nextQuestion.answers[3]}">
+            <label for="answer4">${nextQuestion.answers[3]}</label>
+    </fieldset>
+    <button type="submit" class="submitAnswer">Submit</button>
+  </form>`;
+      
+    $('.score').html(newHeader);
+    $('.container').html(questionText);
+    
+
+  } else {
+    $('.logoScore').empty();
+    $('.container').html(`<h3>FINALPAGE</h3>
+    <img src="" alt="" class="image">
+      <h3>Your score is ${currentScore}/5</h3>
+      <p class="comment">lololol</p>
+      <button type="button" class="restartButton js-restartButton">Restart</button>`);
+    $('.restartButton').keypress(function(event) { 
+      if (event.keyCode === 13) { 
+        $('.restartButton').click(); 
+      } 
+    }); 
+    $('.restartButton').click(function() { 
+      event.preventDefault();
+      location.reload();
+    });
+  }
 }
 
 function startQuiz() {
-  $('.startQuiz').on('click', '.js-button', function(event){
-      
-    loadQuestion(STORE[questionNumberStepper()]);
-  });   
-    
-}
+  let startPage = `<h3>Start Quiz</h3>
+  <p>Test your knowledge!</p>
+  <button type="button" class="startButton js-startButton">Start</button>`;
 
-function createQuestion(item) {
-  //template to generate each question
-}
-
-function correctAnswer() {
-  return `<section class="startQuiz">
-    <h1>CORRECT!</h1>
-    <img>
-    <button type="button" class="startButton js-button">Next Question</button>
-</section>`;
-}
-
-function submitAnswer() {
-  console.log("THIS WORKS");
-  //listens for when the user "submits" their answer to a question
-  //update STORE and render next section
-  $('.startQuiz').submit(function(event) {
-    event.preventDefault();
-    console.log("CLICK");
-    console.log(STORE[5].questionNumber);
-    let currentQuestion = STORE[5].questionNumber;
-    let selected = $("input[name='answers']:checked").val();
-    let correct = STORE[currentQuestion].correctAnswer;
-    console.log(selected);
-    console.log(STORE[currentQuestion].correctAnswer);
-    if (selected === correct) {
-      $('.startQuiz').html(correctAnswer());
-    }
+  $('.container').html(startPage);
+  $('.startButtond').keypress(function(event) { 
+    if (event.keyCode === 13) { 
+      $('.startButton').click(); 
+    } 
+  }); 
+  $('.startButton').click(function() { 
+    let currentQuestion = STORE.questions.slice(0, 1);
+    generateQuestion(currentQuestion, 0, 0);
   });
 }
 
-function handleAnswer() {
-  //check if answer is true or not and display correct or incorrect
+function evaluateAnswer(correct, selected) {
+  let currentScore = $('.scoreNum').html();
+  let incorrectText = `It is actually: ${correct}`;
+  if (selected === correct) {
+    $.alert({
+      title: 'Correct!',
+      content: 'Good Job!',
+      boxWidth: '30%',
+      useBootstrap: false,
+    });
+    let newScore = parseInt(currentScore) + 1;
+    return newScore;
+  }
+  $.alert({
+    title: 'Incorrect!',
+    content: `${incorrectText}`,
+    boxWidth: '30%',
+    useBootstrap: false,
+  });
+  return currentScore;
 }
- 
-function restartQuiz() {
-  //renders original quiz view
-  //startQuiz();
+
+function submitAnswer() {
+  let counter = 0;
+  $('.container').on('submit', function(event) {
+    event.preventDefault();
+    let currentId = $(event.currentTarget).find('fieldset').attr('id');
+    let currentQuestion = STORE.questions.find(item => item.id === currentId);
+    let answerValue = currentQuestion.correctAnswer;
+    let selected = $('input[name=answer]:checked').val();
+    counter++;
+    let currentScore = evaluateAnswer(answerValue, selected);
+    generateQuestion(currentQuestion, counter, currentScore);
+  });
 }
+
+
 
 function doQuiz() {
   startQuiz();
   submitAnswer();
-  handleAnswer();
-  restartQuiz();
-  correctAnswer();
-  questionNumberStepper();
 }
 
 $(doQuiz);
-
