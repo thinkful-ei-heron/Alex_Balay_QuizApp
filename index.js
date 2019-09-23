@@ -4,9 +4,9 @@ const STORE = {
   questions: [
     {id: cuid(), questionNum: 1, question: 'What does Rick use to travel between dimensions and universes?', answers:[ 'space laser', 'portal gun', 'tardis', 'universe key'], correctAnswer: 'portal gun', image: 'photos/img1.jpg'},
     {id: cuid(), questionNum: 2, question: 'What did Jerry ask Mr. Meeseeks for?', answers:[ 'answer1', 'answer2', 'answer3', 'two strokes off his golf game'], correctAnswer: 'two strokes off his golf game', image: 'photos/img6.jpg'},
-    {id: cuid(), questionNum: 3, question: 'What is the name of the park that Rick builds inside an Australian homeless man?', answers:[ 'Anatomy Park', 'answer2', 'answer3', 'answer4'], correctAnswer: 'Anatomy Park'},
-    {id: cuid(), questionNum: 4, question: 'fourth', answers:[ 'answer1', 'answer2', 'answer3', 'answer4'], correctAnswer: 'answer2'},
-    {id: cuid(), questionNum: 5, question: 'fifth', answers:[ 'answer1', 'answer2', 'answer3', 'answer4'], correctAnswer: 'answer4'}
+    {id: cuid(), questionNum: 3, question: 'What is the name of the park that Rick builds inside an Australian homeless man?', answers:[ 'Anatomy Park', 'answer2', 'answer3', 'answer4'], correctAnswer: 'Anatomy Park', image: 'photos/img9.jpg'},
+    {id: cuid(), questionNum: 4, question: 'Who is the worst person alive?', answers:[ 'answer1', 'Tammy', 'answer3', 'answer4'], correctAnswer: 'Tammy', image: 'photos/img10.png'},
+    {id: cuid(), questionNum: 5, question: 'Who is Morty based on?', answers:[ 'answer1', 'answer2', 'answer3', 'Marty from Back to the Future'], correctAnswer: 'answer4', image: 'photos/img2.jpg'}
   ],
   questionNumber: 0,
   score: 0
@@ -51,21 +51,21 @@ function generateQuestion(question, questionNum, currentScore) {
     $('.logoScore').empty();
     if (currentScore === 5) {
       $('.container').html(`
-      <img src="photos/img8.png" alt="a picture of rick sanchez" class="goodScore">
+      <img src="photos/img8.png" alt="a picture of rick sanchez" class="questionImage">
       <h3>Your score is ${currentScore}/5</h3>
       <p class="comment">You a member of the Council of Ricks.</p>
       <button type="button" class="restartButton js-restartButton">Restart</button>`);
     }
     else if (currentScore >= 3) {
       $('.container').html(`
-      <img src="photos/img7.png" alt="a picture of birdperson" class="goodScore">
+      <img src="photos/img7.png" alt="a picture of birdperson" class="questionImage">
       <h3>Your score is ${currentScore}/5</h3>
       <p class="comment">You are pretty good.</p>
       <button type="button" class="restartButton js-restartButton">Restart</button>`);
     }
     else if (currentScore < 3){
     $('.container').html(`
-    <img src="photos/img5.jpg" alt="a picture of jerry" class="badScore">
+    <img src="photos/img5.jpg" alt="a picture of jerry" class="questionImage">
       <h3>Your score is ${currentScore}/5</h3>
       <p class="comment">Okay, Jerry.</p>
       <button type="button" class="restartButton js-restartButton">Restart</button>`);
@@ -86,7 +86,7 @@ function generateQuestion(question, questionNum, currentScore) {
 
 function startQuiz() {
   let startPage = `
-  <img class="startImage" src="photos/img3.jpg" alt="rick and morty logo"/>
+  <img class="questionImage" src="photos/img3.jpg" alt="rick and morty logo"/>
   <p>Let's go. In and out. Twenty minute adventure.</p>
   <button type="button" class="startButton js-startButton">Show Us What You've Got</button>`;
 
@@ -104,7 +104,7 @@ function startQuiz() {
 
 function evaluateAnswer(correct, selected) {
   let currentScore = $('.scoreNum').html();
-  let incorrectText = `It is actually: ${correct}`;
+  let incorrectText = `It is: ${correct}`;
   if (selected === correct) {
     $.alert({
       title: 'Correct!',

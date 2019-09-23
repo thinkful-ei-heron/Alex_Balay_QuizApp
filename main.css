@@ -3,11 +3,15 @@
     margin: 0;
     padding: 0;
     border-radius: 1%;
-    font-family: Impact, Charcoal, sans-serif;
+    font-family: "HelveticaNeue-CondensedBold", "Helvetica Neue";
     /* display: flex;
     flex-direction: column; */
-    /* background-color: black;
+    /*background-color: black;*/
     /* color: #136207; */
+}
+
+body {
+    background-color: black;
 }
 
 /* header {
@@ -35,10 +39,11 @@
   /* align-items: center; */
   text-align: center;
   margin-top: 3em;
+  color: white;
 }
 
 .image {
-  width: 50%;
+    width: 50%;
 }
 
 .score {
@@ -84,15 +89,19 @@ fieldset {
 .submitAnswer {
   text-align: left;
   width:  50%;
+  color: white;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .submitAnswerButton {
   text-align: center;
   margin: 0 auto;
+  margin-bottom: 2em;
 }
 .questionText {
     margin-bottom: 1em;
     font-size: 2em;
+    
 }
 
 .container {
@@ -106,19 +115,27 @@ fieldset {
     width: 50%; */
 }
 
+.questionImage {
+    width: 50%;
+    margin-top: 2em;
+    margin-bottom: 1.5em;
+    border: 1px solid black;
+}
+
 p {
     margin-bottom: 1em;
 }
 
 button { 
     background-color: #4CAF50; /* Green */ 
-    border: none; 
+    border: 1px solid black;
     color: white; 
     padding: 15px 32px; 
     text-align: center; 
     text-decoration: none; 
     display: inline-block; 
     font-size: 16px; 
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .goodScore {
@@ -126,6 +143,13 @@ button {
   width: 15%;
 }
 
+.startButton {
+    margin-bottom: 2em;
+}
+
+.restartButton {
+    margin-bottom: 2em;
+}
 
 
 
