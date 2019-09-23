@@ -3,7 +3,7 @@
 const STORE = {
   questions: [
     {id: cuid(), questionNum: 1, question: 'What does Rick use to travel between dimensions and universes?', answers:[ 'space laser', 'portal gun', 'tardis', 'universe key'], correctAnswer: 'portal gun'},
-    {id: cuid(), questionNum: 2, question: 'second', answers:[ 'answer1', 'answer2', 'answer3', 'answer4'], correctAnswer: 'answer4'},
+    {id: cuid(), questionNum: 2, question: 'What did Jerry ask Mr. Meeseeks for?', answers:[ 'answer1', 'answer2', 'answer3', 'two strokes off his golf game'], correctAnswer: 'two strokes off his golf game'},
     {id: cuid(), questionNum: 3, question: 'third', answers:[ 'answer1', 'answer2', 'answer3', 'answer4'], correctAnswer: 'answer2'},
     {id: cuid(), questionNum: 4, question: 'fourth', answers:[ 'answer1', 'answer2', 'answer3', 'answer4'], correctAnswer: 'answer2'},
     {id: cuid(), questionNum: 5, question: 'fifth', answers:[ 'answer1', 'answer2', 'answer3', 'answer4'], correctAnswer: 'answer4'}
@@ -28,18 +28,18 @@ function generateQuestion(question, questionNum, currentScore) {
     <fieldset id="${nextQuestion.id}">
             <legend class="questionText">${nextQuestion.question}</legend>
             <input type="radio" name="answer" id="answer1" value="${nextQuestion.answers[0]}" required>
-            <label for="answer1">${nextQuestion.answers[0]}</label>
+            <label class="inputButton" for="answer1">${nextQuestion.answers[0]}</label>
             <br>
             <input type="radio" name="answer" id="answer2" value="${nextQuestion.answers[1]}">
-            <label for="answer2">${nextQuestion.answers[1]}</label>
+            <label class="inputButton" for="answer2">${nextQuestion.answers[1]}</label>
             <br>
             <input type="radio" name="answer" id="answer3" value="${nextQuestion.answers[2]}">
-            <label for="answer3">${nextQuestion.answers[2]}</label>
+            <label class="inputButton" for="answer3">${nextQuestion.answers[2]}</label>
             <br>
             <input type="radio" name="answer" id="answer4" value="${nextQuestion.answers[3]}">
-            <label for="answer4">${nextQuestion.answers[3]}</label>
+            <label class="inputButton" for="answer4">${nextQuestion.answers[3]}</label>
     </fieldset>
-    <button type="submit" class="submitAnswer">Submit</button>
+    <div class="submitAnswerButton"><button type="submit" >Submit</button></div>
   </form>`;
       
     $('.score').html(newHeader);
@@ -66,9 +66,10 @@ function generateQuestion(question, questionNum, currentScore) {
 }
 
 function startQuiz() {
-  let startPage = `<h3>Start Quiz</h3>
-  <p>Test your knowledge!</p>
-  <button type="button" class="startButton js-startButton">Start</button>`;
+  let startPage = `
+  <img class="startImage" src="photos/img3.jpg" alt="rick and morty logo"/>
+  <p>Let's go. In and out. Twenty minute adventure.</p>
+  <button type="button" class="startButton js-startButton">Show Us What You've Got</button>`;
 
   $('.container').html(startPage);
   $('.startButtond').keypress(function(event) { 
