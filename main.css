@@ -3,12 +3,12 @@
     margin: 0;
     padding: 0;
     border-radius: 1%;
+    font-family: Impact, Charcoal, sans-serif;
     /* display: flex;
     flex-direction: column; */
-    /* background-color: black; */
+    /* background-color: black;
     /* color: #136207; */
 }
-
 
 /* header {
   width: 100%;
@@ -34,6 +34,7 @@
   width: 100%;
   /* align-items: center; */
   text-align: center;
+  margin-top: 3em;
 }
 
 .image {
@@ -56,6 +57,10 @@ ul {
 .container {
   background: gray;
   width: 50%;
+}
+
+.startImage {
+  max-width: 100%;
 }
 fieldset {
     border: 0;
@@ -94,10 +99,11 @@ fieldset {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 3em;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 3em;
+    /* height: auto;
+    width: 50%; */
 }
 
 p {
@@ -113,6 +119,11 @@ button {
     text-decoration: none; 
     display: inline-block; 
     font-size: 16px; 
+}
+
+.goodScore {
+  height: 15%;
+  width: 15%;
 }
 
 

@@ -4,7 +4,7 @@ const STORE = {
   questions: [
     {id: cuid(), questionNum: 1, question: 'What does Rick use to travel between dimensions and universes?', answers:[ 'space laser', 'portal gun', 'tardis', 'universe key'], correctAnswer: 'portal gun'},
     {id: cuid(), questionNum: 2, question: 'What did Jerry ask Mr. Meeseeks for?', answers:[ 'answer1', 'answer2', 'answer3', 'two strokes off his golf game'], correctAnswer: 'two strokes off his golf game'},
-    {id: cuid(), questionNum: 3, question: 'third', answers:[ 'answer1', 'answer2', 'answer3', 'answer4'], correctAnswer: 'answer2'},
+    {id: cuid(), questionNum: 3, question: 'What is the name of the park that Rick builds inside an Australian homeless man?', answers:[ 'Anatomy Park', 'answer2', 'answer3', 'answer4'], correctAnswer: 'Anatomy Park'},
     {id: cuid(), questionNum: 4, question: 'fourth', answers:[ 'answer1', 'answer2', 'answer3', 'answer4'], correctAnswer: 'answer2'},
     {id: cuid(), questionNum: 5, question: 'fifth', answers:[ 'answer1', 'answer2', 'answer3', 'answer4'], correctAnswer: 'answer4'}
   ],
@@ -48,11 +48,29 @@ function generateQuestion(question, questionNum, currentScore) {
 
   } else {
     $('.logoScore').empty();
-    $('.container').html(`<h3>FINALPAGE</h3>
-    <img src="" alt="" class="image">
+    if (currentScore === 5) {
+      $('.container').html(`
+      <img src="photos/img8.png" alt="a picture of rick sanchez" class="goodScore">
       <h3>Your score is ${currentScore}/5</h3>
-      <p class="comment">lololol</p>
+      <p class="comment">You a member of the Council of Ricks.</p>
       <button type="button" class="restartButton js-restartButton">Restart</button>`);
+    }
+    else if (currentScore >= 3) {
+      $('.container').html(`
+      <img src="photos/img7.png" alt="a picture of birdperson" class="goodScore">
+      <h3>Your score is ${currentScore}/5</h3>
+      <p class="comment">You are pretty good.</p>
+      <button type="button" class="restartButton js-restartButton">Restart</button>`);
+    }
+    else if (currentScore < 3){
+    $('.container').html(`
+    <img src="photos/img5.jpg" alt="a picture of jerry" class="badScore">
+      <h3>Your score is ${currentScore}/5</h3>
+      <p class="comment">Okay, Jerry.</p>
+      <button type="button" class="restartButton js-restartButton">Restart</button>`);
+    }
+    
+    
     $('.restartButton').keypress(function(event) { 
       if (event.keyCode === 13) { 
         $('.restartButton').click(); 
