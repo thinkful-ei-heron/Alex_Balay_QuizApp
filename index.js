@@ -2,8 +2,8 @@
 
 const STORE = {
   questions: [
-    {id: cuid(), questionNum: 1, question: 'What does Rick use to travel between dimensions and universes?', answers:[ 'space laser', 'portal gun', 'tardis', 'universe key'], correctAnswer: 'portal gun'},
-    {id: cuid(), questionNum: 2, question: 'What did Jerry ask Mr. Meeseeks for?', answers:[ 'answer1', 'answer2', 'answer3', 'two strokes off his golf game'], correctAnswer: 'two strokes off his golf game'},
+    {id: cuid(), questionNum: 1, question: 'What does Rick use to travel between dimensions and universes?', answers:[ 'space laser', 'portal gun', 'tardis', 'universe key'], correctAnswer: 'portal gun', image: 'photos/img1.jpg'},
+    {id: cuid(), questionNum: 2, question: 'What did Jerry ask Mr. Meeseeks for?', answers:[ 'answer1', 'answer2', 'answer3', 'two strokes off his golf game'], correctAnswer: 'two strokes off his golf game', image: 'photos/img6.jpg'},
     {id: cuid(), questionNum: 3, question: 'What is the name of the park that Rick builds inside an Australian homeless man?', answers:[ 'Anatomy Park', 'answer2', 'answer3', 'answer4'], correctAnswer: 'Anatomy Park'},
     {id: cuid(), questionNum: 4, question: 'fourth', answers:[ 'answer1', 'answer2', 'answer3', 'answer4'], correctAnswer: 'answer2'},
     {id: cuid(), questionNum: 5, question: 'fifth', answers:[ 'answer1', 'answer2', 'answer3', 'answer4'], correctAnswer: 'answer4'}
@@ -24,7 +24,8 @@ function generateQuestion(question, questionNum, currentScore) {
           <span class="scoreNum">${currentScore}</span></li>  
   </ul>`;
     let questionText = 
-    `<form class="submitAnswer">
+    `<img src="${nextQuestion.image}" alt="photo of rick and morty" class="questionImage"/>
+    <form class="submitAnswer">
     <fieldset id="${nextQuestion.id}">
             <legend class="questionText">${nextQuestion.question}</legend>
             <input type="radio" name="answer" id="answer1" value="${nextQuestion.answers[0]}" required>
