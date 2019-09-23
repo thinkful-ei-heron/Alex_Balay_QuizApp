@@ -54,17 +54,12 @@ body {
   text-align: right;
   margin-left: auto;
   margin-right: auto;
-  font-size: 2em;
 }
 
 ul {
   list-style-type: none;
 }
 
-.container {
-  background: gray;
-  width: 50%;
-}
 
 .startImage {
   max-width: 100%;
@@ -97,9 +92,9 @@ fieldset {
 
 .submitAnswerButton {
   text-align: center;
-  margin: 0 auto;
   margin-bottom: 2em;
 }
+
 .questionText {
     margin-bottom: 1em;
     font-size: 2em;
@@ -113,6 +108,9 @@ fieldset {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 3em;
+    font-size: 50%;
+    background: gray;
+    width: 50%;
     /* height: auto;
     width: 50%; */
 }
@@ -132,11 +130,10 @@ button {
     background-color: #4CAF50; /* Green */ 
     border: 1px solid black;
     color: white; 
-    padding: 15px 32px; 
+    padding: 10px 10px; 
     text-align: center; 
     text-decoration: none; 
     display: inline-block; 
-    font-size: 16px; 
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
@@ -147,10 +144,16 @@ button {
 
 .startButton {
     margin-bottom: 2em;
+    font-size: 100%;
+    width: 80%;
 }
 
 .restartButton {
     margin-bottom: 2em;
+}
+
+.inputButton {
+    font-size: 1.5em;
 }
 
 
