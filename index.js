@@ -12,75 +12,82 @@ const STORE = {
   score: 0
 };
 
-
-
-function generateQuestion(question, questionNum, currentScore) {
-  if (questionNum < 5) {
-    let nextQuestion = STORE.questions[questionNum];
-    let newHeader = `<ul>
-      <li class="questionCount">Question
-          <span class="questionNum">${nextQuestion.questionNum}</span>/5</li>
-      <li class ="scoreCount">Score:
-          <span class="scoreNum">${currentScore}</span></li>  
-  </ul>`;
-    let questionText = 
-    `<img src="${nextQuestion.image}" alt="photo of rick and morty" class="questionImage"/>
-    <form class="submitAnswer">
-    <fieldset id="${nextQuestion.id}">
-            <legend class="questionText">${nextQuestion.question}</legend>
-            <input type="radio" name="answer" id="answer1" value="${nextQuestion.answers[0]}" required>
-            <label class="inputButton" for="answer1">${nextQuestion.answers[0]}</label>
-            <br>
-            <input type="radio" name="answer" id="answer2" value="${nextQuestion.answers[1]}">
-            <label class="inputButton" for="answer2">${nextQuestion.answers[1]}</label>
-            <br>
-            <input type="radio" name="answer" id="answer3" value="${nextQuestion.answers[2]}">
-            <label class="inputButton" for="answer3">${nextQuestion.answers[2]}</label>
-            <br>
-            <input type="radio" name="answer" id="answer4" value="${nextQuestion.answers[3]}">
-            <label class="inputButton" for="answer4">${nextQuestion.answers[3]}</label>
-    </fieldset>
-    <div class="submitAnswerButton"><button type="submit" >Submit</button></div>
-  </form>`;
-    $('.logo').empty();
-    $('.score').html(newHeader);
-    $('.container').html(questionText);
-    
-
-  } else {
-    $('.logoScore').empty();
-    if (currentScore === 5) {
-      $('.container').html(`
+function resultsPage(currentScore) {
+  $('.logoScore').empty();
+  if (currentScore === 5) {
+    $('.container').html(`
       <img src="photos/img8.png" alt="a picture of rick sanchez" class="questionImage">
       <h3>Your score is ${currentScore}/5</h3>
-      <p class="comment">You a member of the Council of Ricks.</p>
+      <p class="comment">You are a member of the Council of Ricks.</p>
       <button type="button" class="restartButton js-restartButton">Restart</button>`);
-    }
-    else if (currentScore >= 3) {
-      $('.container').html(`
+  }
+  else if (currentScore >= 3) {
+    $('.container').html(`
       <img src="photos/img7.png" alt="a picture of birdperson" class="questionImage">
       <h3>Your score is ${currentScore}/5</h3>
       <p class="comment">You are pretty good.</p>
       <button type="button" class="restartButton js-restartButton">Restart</button>`);
-    }
-    else if (currentScore < 3){
+  }
+  else if (currentScore < 3){
     $('.container').html(`
     <img src="photos/img5.jpg" alt="a picture of jerry" class="questionImage">
       <h3>Your score is ${currentScore}/5</h3>
       <p class="comment">Okay, Jerry.</p>
       <button type="button" class="restartButton js-restartButton">Restart</button>`);
-    }
-    
-    
-    $('.restartButton').keypress(function(event) { 
-      if (event.keyCode === 13) { 
-        $('.restartButton').click(); 
-      } 
-    }); 
-    $('.restartButton').click(function() { 
-      event.preventDefault();
-      location.reload();
-    });
+  }
+  $('.restartButton').keypress(function(event) { 
+    if (event.keyCode === 13) { 
+      $('.restartButton').click(); 
+    } 
+  }); 
+  $('.restartButton').click(function() { 
+    event.preventDefault();
+    location.reload();
+  });
+}
+
+function renderScore(question, currentScore) {
+  let newText = `<ul>
+  <li class="questionCount">Question
+      <span class="questionNum">${question.questionNum}</span>/5</li>
+  <li class ="scoreCount">Score:
+      <span class="scoreNum">${currentScore}</span></li>  
+</ul>`;
+  $('.score').html(newText);
+}
+
+function renderQuestion(question) {
+  let newText = `<img src="${question.image}" alt="photo of rick and morty" class="questionImage"/>
+  <form class="submitAnswer">
+  <fieldset id="${question.id}">
+          <legend class="questionText">${question.question}</legend>
+          <input type="radio" name="answer" id="answer1" value="${question.answers[0]}" required>
+          <label class="inputButton" for="answer1">${question.answers[0]}</label>
+          <br>
+          <input type="radio" name="answer" id="answer2" value="${question.answers[1]}">
+          <label class="inputButton" for="answer2">${question.answers[1]}</label>
+          <br>
+          <input type="radio" name="answer" id="answer3" value="${question.answers[2]}">
+          <label class="inputButton" for="answer3">${question.answers[2]}</label>
+          <br>
+          <input type="radio" name="answer" id="answer4" value="${question.answers[3]}">
+          <label class="inputButton" for="answer4">${question.answers[3]}</label>
+  </fieldset>
+  <div class="submitAnswerButton"><button type="submit" class="submitButton">Submit</button></div>
+</form>`;
+$('.container').html(newText);
+}
+
+
+
+function generateQuestion(question, questionNum, currentScore) {
+  if (questionNum < 5) {
+    let nextQuestion = STORE.questions[questionNum];
+    $('.logo').empty();
+    renderScore(nextQuestion, currentScore);
+    renderQuestion(nextQuestion);
+  } else {
+    resultsPage(currentScore);
   }
 }
 
@@ -97,6 +104,7 @@ function startQuiz() {
     } 
   }); 
   $('.startButton').click(function() { 
+    console.log("STARTED!")
     let currentQuestion = STORE.questions.slice(0, 1);
     generateQuestion(currentQuestion, 0, 0);
   });
