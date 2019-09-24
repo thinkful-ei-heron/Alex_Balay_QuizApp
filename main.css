@@ -3,43 +3,18 @@
     margin: 0;
     padding: 0;
     border-radius: 1%;
-    
-    /* display: flex;
-    flex-direction: column; */
-    /*background-color: black;*/
-    /* color: #136207; */
 }
 
 body {
     background-color: black;
     font-family: "HelveticaNeue-CondensedBold", "Helvetica Neue";
-    
-
 }
-
-/* header {
-  width: 100%;
-  text-align: center;
-}
-
-.logo {
-  display: inline-block;
-  margin: 0 auto;
-  width: 50%;
-} */
-
-/* ul {
-  text-align: right;
-  margin-right: 3em;
-  font-size: 2em;
-} */
 
 .logoScore {
   display: flex;
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  /* align-items: center; */
   text-align: center;
   margin-top: 3em;
   color: white;
@@ -100,8 +75,6 @@ fieldset {
     width: 80%;
     color: white;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-    /* height: auto;
-    width: 50%; */
 }
 
 .questionImage {
@@ -114,6 +87,7 @@ fieldset {
 p {
     margin-bottom: 1em;
 }
+
 input[type=radio] {
   float: left;
 }
@@ -122,8 +96,9 @@ label {
   margin-left: 30px;
   display: block;
 }
+
 button { 
-    background-color: #4CAF50; /* Green */ 
+    background-color: #4CAF50;
     border: 1px solid black;
     color: white; 
     padding: 10px 10px; 
@@ -157,6 +132,7 @@ button {
   .container {
     font-size: 100%;
   }
+  
   .submitAnswer {
     font-size: 80%;
   }

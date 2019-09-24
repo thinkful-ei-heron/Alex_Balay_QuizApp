@@ -2,11 +2,11 @@
 
 const STORE = {
   questions: [
-    {id: cuid(), questionNum: 1, question: 'What does Rick use to travel between dimensions and universes?', answers:[ 'space laser', 'portal gun', 'tardis', 'universe key'], correctAnswer: 'portal gun', image: 'photos/img1.jpg'},
-    {id: cuid(), questionNum: 2, question: 'What did Jerry ask Mr. Meeseeks for?', answers:[ 'answer1', 'answer2', 'answer3', 'two strokes off his golf game'], correctAnswer: 'two strokes off his golf game', image: 'photos/img6.jpg'},
-    {id: cuid(), questionNum: 3, question: 'What is the name of the park that Rick builds inside an Australian homeless man?', answers:[ 'Anatomy Park', 'answer2', 'answer3', 'answer4'], correctAnswer: 'Anatomy Park', image: 'photos/img9.jpg'},
-    {id: cuid(), questionNum: 4, question: 'Who is the worst person alive?', answers:[ 'answer1', 'Tammy', 'answer3', 'answer4'], correctAnswer: 'Tammy', image: 'photos/img10.png'},
-    {id: cuid(), questionNum: 5, question: 'Who is Morty based on?', answers:[ 'answer1', 'answer2', 'answer3', 'Marty from Back to the Future'], correctAnswer: 'Marty from Back to the Future', image: 'photos/img2.jpg'}
+    {id: cuid(), questionNum: 1, question: 'What does Rick use to travel between dimensions and universes?', answers:[ 'Space Laser', 'Portal Gun', 'Tardis', 'Universe Key'], correctAnswer: 'Portal Gun', image: 'photos/img1.jpg'},
+    {id: cuid(), questionNum: 2, question: 'What did Jerry ask Mr. Meeseeks for?', answers:[ 'A million dollars', 'To be a complete woman', 'To be popular in school', 'Two strokes off his golf game'], correctAnswer: 'Two strokes off his golf game', image: 'photos/img6.jpg'},
+    {id: cuid(), questionNum: 3, question: 'What is the name of the park that Rick builds inside an Australian homeless man?', answers:[ 'Anatomy Park', 'Inside World', 'Anatomical Land', 'Microtopia'], correctAnswer: 'Anatomy Park', image: 'photos/img9.jpg'},
+    {id: cuid(), questionNum: 4, question: 'Who is the worst person alive?', answers:[ 'Birdperson', 'Tammy', 'Jerry', 'Rick'], correctAnswer: 'Tammy', image: 'photos/img10.png'},
+    {id: cuid(), questionNum: 5, question: 'Who is Morty based on?', answers:[ 'Dan Harmon', 'The kid from The Princess Bride', 'Martin Van Buren', 'Marty from Back to the Future'], correctAnswer: 'Marty from Back to the Future', image: 'photos/img2.jpg'}
   ],
   questionNumber: 0,
   score: 0
